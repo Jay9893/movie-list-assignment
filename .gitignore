@@ -1,0 +1,36 @@
+# Node.js
+node_modules/
+
+# Next.js build
+.next/
+
+# Development environment
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# VSCode settings
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+logs
+*.log
+
+# Testing
+coverage/
+
+# Build files
+out/
+
+# Packages
+*.zip
+*.tgz
+
+# Yarn
+yarn-error.log
+.pnp.*
+.pnp.js

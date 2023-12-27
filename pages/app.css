@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #093545;
+  position: relative;
+  min-height: 100vh;
+}
+ul, li{
+  margin: 0px;
+  padding: 0px;
+}
+/* .bottom-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url('/Vectors.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+} */
+
+/* .bottom-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+  background-image: url('/Vectors.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 115px;
+} */
+
+.bottom-image{
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
