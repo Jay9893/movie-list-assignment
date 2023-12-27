@@ -16,10 +16,8 @@ const MovieCreate = ({ id }) => {
   const handleFileChange = (e) => {
     setImage(e[0]);
     setFile(e[0].name);
-    console.log(e[0].name, "dsf");
   };
   const onDrop = useCallback((acceptedFiles) => {
-    console.log("acceptedFiles", acceptedFiles);
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
@@ -55,7 +53,6 @@ const MovieCreate = ({ id }) => {
       }
     }
   };
-  console.log(image);
 
   useEffect(() => {
     const getOneMovie = async () => {

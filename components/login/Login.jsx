@@ -7,9 +7,14 @@ import { useRouter } from "next/router";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
   const router = useRouter()
 
   const handleUser = async () => {
+    if (!email || !password) {
+      setError("Please enter both email and password.");
+      return;
+    }
     try {
       const response = await axios.post("/api/user", {
         email,
@@ -17,9 +22,20 @@ const Login = () => {
       });
       router.push("/movies")
     } catch (error) {
-      console.error("Error creating User:", error.message);
-      // handle errors or show an error message
+      setError(error.response.data.error);
     }
+  };
+  
+  // Clear the error when the user starts typing
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    setError(null); // Clear the error when the email changes
+  };
+
+   // Clear the error when the user starts typing
+   const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    setError(null); 
   };
 
   return (
@@ -30,7 +46,7 @@ const Login = () => {
           <input
             type="text"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmailChange}
             placeholder="Email"
             className="input-box"
           />
@@ -39,7 +55,7 @@ const Login = () => {
           <input
             type="text"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePasswordChange}
             placeholder="Password"
             className="input-box"
           />
@@ -48,6 +64,7 @@ const Login = () => {
           <input type="checkbox" />
           <label htmlFor="vehicle1">Remember me</label>
         </div>
+        {error && <p className="error-message">{error}</p>}
         <div>
           <button type="button" className="submitbutton" onClick={handleUser}>
             Login

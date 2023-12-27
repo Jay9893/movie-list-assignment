@@ -49,3 +49,9 @@
   border: none;
   background-color: #2bd17e;
 }
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}

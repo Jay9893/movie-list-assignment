@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.css";
 import btmImage from "../public/Vectors.svg"
+
 export default function App({ Component, pageProps }) {
   return (
     <div className="main_wrapper">

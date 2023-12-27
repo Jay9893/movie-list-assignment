@@ -1,20 +1,23 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs"
 
 if (mongoose.models.User) {
   // Model already exists, no need to redefine
   module.exports = mongoose.models.User;
 } else {
-  const userSchema = new mongoose.Schema({
-    email: { type: String },
-    password: { type: String }
-  },{
-    timestamps:true
-  });
-  
-  
+  const userSchema = new mongoose.Schema(
+    {
+      email: { type: String },
+      password: { type: String },
+    },
+    {
+      timestamps: true,
+    }
+  );
+
   // Hash the password before saving to the database
-  
-  userSchema.pre('save', async function (next) {
+
+  userSchema.pre("save", async function (next) {
     try {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(this.password, salt);
@@ -24,6 +27,6 @@ if (mongoose.models.User) {
       next(error);
     }
   });
-  
-  module.exports= mongoose.model("User", userSchema);
+
+  module.exports = mongoose.model("User", userSchema);
 }

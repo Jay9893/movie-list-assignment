@@ -7,7 +7,6 @@ import Link from "next/link";
 import btmImage from "../../public/Vector.svg";
 import Group from "../../public/Group.svg";
 
-console.log(btmImage, "dsaf");
 const MovieList = () => {
   const [movie, setMovie] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);

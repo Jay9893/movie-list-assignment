@@ -12,7 +12,7 @@ export default async function handler(req, res) {
         .status(405)
         .json({ success: false, error: "Method Not Allowed" });
     }
-
+    
     const { email, password } = req.body;
     if (!email || !password) {
       return res

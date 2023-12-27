@@ -69,7 +69,6 @@ export default async function handler(req, res) {
       });
     } else if (req.method === "PUT") {
       upload.single("image")(req, res, async function (err) {
-        console.log(err,"dsaf");
         if (err instanceof multer.MulterError) {
           return res.status(400).json({ error: "File upload error" });
         } else if (err) {
