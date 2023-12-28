@@ -6,6 +6,7 @@ import ReactPaginate from "react-paginate";
 import Link from "next/link";
 import btmImage from "../../public/Vector.svg";
 import Group from "../../public/Group.svg";
+import axiosInstance from '../../axiosInstance'
 
 const MovieList = () => {
   const [movie, setMovie] = useState([]);
@@ -14,7 +15,8 @@ const MovieList = () => {
 
   const handleUser = async (Page) => {
     try {
-      const response = await axios.get(`/api/movie?page=${currentPage}`);
+      const response = await axiosInstance.get(`/movies?page=${currentPage}`);
+      console.log(response,"dfsa");
       setMovie(response.data.result);
       setTotalPages(response.data.totalPages);
     } catch (error) {
@@ -76,7 +78,7 @@ const MovieList = () => {
               <div className="card">
                 <Link href={`/${item._id}`} style={{ textDecoration: "none" }}>
                   <img
-                    src={`/api/imageget/?id=${item._id}`}
+                    src={`https://movieapi-hi6b.onrender.com/api/movies/image/${item._id}`}
                     style={{ width: "100%", height: "400px" }}
                   />
                   <div className="contentarea">

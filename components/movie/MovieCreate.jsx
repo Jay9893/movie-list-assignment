@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import "./movie.css";
 import btmImage from "../../public/file_download.svg";
 import Dropzone, { useDropzone } from "react-dropzone";
+import axiosInstance from '../../axiosInstance'
 
 const MovieCreate = ({ id }) => {
   const router = useRouter();
@@ -28,7 +29,7 @@ const MovieCreate = ({ id }) => {
         formData.append("title", title);
         formData.append("publishingYear", publishingYear);
         formData.append("image", image);
-        const response = await axios.put(`/api/movie?id=${id}`, formData);
+        const response = await axiosInstance.put(`/movies/${id}`, formData);
         router.push("/movies");
         setTitle("");
         setPublishingYear("");
@@ -43,7 +44,7 @@ const MovieCreate = ({ id }) => {
         formData.append("publishingYear", publishingYear);
         formData.append("image", image);
 
-        const response = await axios.post("/api/movie", formData);
+        const response = await axiosInstance.post("/movies", formData);
         router.push("/movies");
         setTitle("");
         setPublishingYear("");
@@ -57,7 +58,7 @@ const MovieCreate = ({ id }) => {
   useEffect(() => {
     const getOneMovie = async () => {
       try {
-        const response = await axios.get(`/api/moviegetone?id=${id}`);
+        const response = await axiosInstance.get(`/movies/${id}`);
         setPublishingYear(response.data.result.publishingYear);
         setTitle(response.data.result.title);
       } catch (error) {

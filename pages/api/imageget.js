@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       const { id } = req.query;
 
       const result = await Movie.findById(id);
-
+      console.log(result.image);
       res.setHeader("Content-Type", result.image.contentType);
       res.send(result.image.data);
     } else {

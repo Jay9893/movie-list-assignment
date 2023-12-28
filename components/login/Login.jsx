@@ -3,6 +3,8 @@ import axios from "axios";
 import { useState } from "react";
 import "./login.css";
 import { useRouter } from "next/router";
+import axiosInstance from '../../axiosInstance'
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +18,7 @@ const Login = () => {
       return;
     }
     try {
-      const response = await axios.post("/api/user", {
+      const response = await axiosInstance.post("/users/login", {
         email,
         password,
       });
@@ -53,7 +55,7 @@ const Login = () => {
         </div>
         <div>
           <input
-            type="text"
+            type="password"
             value={password}
             onChange={handlePasswordChange}
             placeholder="Password"
